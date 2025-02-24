@@ -113,7 +113,7 @@ def updateCom_alumno(no_control):
         alumno.ap_materno = data['ap_materno']
         alumno.semestre = data['semestre']
     else: 
-        return jsonify({'msg':'Datos del alumno incompletos'})
+        return jsonify({'msg':'Dato del alumno incompletos'})
     db.session.commit()
     return jsonify({'msg':'Alumno actualizado correctamente'})
 
