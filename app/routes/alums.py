@@ -56,3 +56,13 @@ def update_alumno(no_control):
 
     db.session.commit()
     return jsonify({'msg':'Alumno actualizado correctamente'})
+
+# Endpoint para eliminar un alumno
+@alu_bp.route('/alumnos/<no_control>', methods=['DELETE'])
+def delete_alumno(no_control):
+    alumno = Alumnos.query.get(no_control)
+    if alumno is None:
+        return jsonify ({'msg':'Alumno no encontrado'})
+    db.session.delete(alumno)
+    db.session.commit()
+    return jsonify({'msg':'Alumno eliminado correctamente'})
