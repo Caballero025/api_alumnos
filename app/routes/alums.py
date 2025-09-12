@@ -22,3 +22,17 @@ def insert_alumno():
     db.session.commit()
     return jsonify ({'msg':'Alumno agregado correctamente'})
 
+# Endpoint para obtener todos los alumnos
+@alu_bp.route('/alumnos', methods=['GET'])
+def get_alumnos():
+    alumnos = Alumnos.query.all()
+    lista_alumnos = []
+    for alumno in alumnos:  
+        lista_alumnos.append({
+            'no_control': alumno.no_control,
+            'nombre': alumno.nombre,
+            'ap_paterno': alumno.ap_paterno,
+            'ap_materno': alumno.ap_materno,
+            'semestre': alumno.semestre
+        })
+    return jsonify(lista_alumnos)
